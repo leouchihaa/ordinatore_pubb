@@ -1,0 +1,30 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>_+Ordinatore+_</title>
+</head>
+<body>
+    <form action="/inserisci" method="POST">
+	{% if contatore != 10 %}
+		<p>Inserire {{ 10-contatore }} nomi (uno dopo l'altro)</p>
+		<input type="text" name="nome" required>
+		<button type="submit">Carica</button>
+		{% if contatore != 0 %}
+			<p>Hai inserito "{{ nuovonome }}".</p>
+		{% endif %}
+	{% endif %}
+	</form>
+	{% if contatore == 10 %}
+		<p>i nomi inseriti sono: {{ arraydinomi }}</p>
+		<button type="ordina" onclick="location='/ordinamento'">Ordina</button>
+	{% endif %}
+	{% if contatore != 0 %}
+		<button type="reset" onclick="location='/'">Reset</button>
+	{% endif %}
+	{% if flag == True %}
+		<p>lista ordinata: {{ arrayordinato }}</p>
+	{% endif %}
+</body>
+</html>
