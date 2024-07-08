@@ -1,16 +1,12 @@
 pipeline {
     agent any
-
-    environment {
-        GITHUB_CREDENTIALS = credentials('57c8fe4e-ef17-47ae-b876-d792dcd87f2e')
-    }
     
     stages {
         stage('Clone repository') {
             steps {
                 script {
                     // Clona il repository Git
-                    git branch: 'main', credentialsId: GITHUB_CREDENTIALS, url: 'https://github.com/leouchihaa/ordinatore_web'
+                    git 'https://github.com/leouchihaa/ordinatore_pubb.git'
                 }
             }
         }
