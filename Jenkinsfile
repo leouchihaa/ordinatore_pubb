@@ -34,17 +34,17 @@ pipeline {
             }
         }
 
-        stage('Build Docker image') {
-            steps {
-                script {
-                    // Costruisci l'immagine Docker
-                    powershell '''
-                        cd src
-                        docker build -t myapp:latest .
-                    '''
-                }
-            }
-        }
+//        stage('Build Docker image') {
+//            steps {
+//                script {
+//                    // Costruisci l'immagine Docker
+//                    powershell '''
+//                        cd src
+//                        docker build -t myapp:latest .
+//                    '''
+//                }
+//            }
+//        }
 
         stage('Run Docker container') {
             steps {
@@ -61,7 +61,8 @@ pipeline {
 
                     // Avvia il contenitore Docker
                     powershell '''
-                        docker run -d -p 5000:5000 --name myapp_container myapp:latest
+                        docker run -d -p 3000:3000 --name myapp_container myapp:latest
+                        docker ps
                     '''
                 }
             }
