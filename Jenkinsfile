@@ -27,6 +27,7 @@ pipeline {
                 script {
                     // Crea e attiva l'ambiente virtuale Python
                     powershell '''
+                        python --version
                         python -m venv venv
                         ./venv/Scripts/Activate.ps1
                         pip install -r requirements.txt
