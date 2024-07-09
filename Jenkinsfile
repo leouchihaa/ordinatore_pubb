@@ -54,9 +54,8 @@ pipeline {
                         echo frinc
                         try {
                             docker stop myapp_container
-                            docker rm myapp_container
                         } catch {
-                            echo "non ci sono container dalle compilazioni precedenti."
+                            echo "non ci sono container attivi dalle compilazioni precedenti."
                         }
                     '''
 
