@@ -1,9 +1,5 @@
 pipeline {
     agent any
-
-    environment {
-        PATH = "$PATH:/c/Python39"
-    }
     
     stages {
         
@@ -19,7 +15,7 @@ pipeline {
             steps {
                 script {
                     powershell '''
-                        pwd
+                        python --version
                         whoami
                     '''
                 }
