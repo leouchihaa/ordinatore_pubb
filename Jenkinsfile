@@ -58,10 +58,7 @@ pipeline {
                             echo "non ci sono container attivi dalle compilazioni precedenti."
                         }
                         echo frincc
-                    '''
-
-                    // Avvia il contenitore Docker
-                    powershell '''
+                        # Avvia il contenitore Docker
                         echo daje
                         docker run -d -p 3000:3000 --name myapp_container myapp:latest
                         echo dajedaje
