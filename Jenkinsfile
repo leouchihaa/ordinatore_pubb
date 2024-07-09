@@ -22,12 +22,26 @@ pipeline {
             }
         }
 
+        stage('Install python') {
+            steps {
+                script {
+                    //controlla la versione di python e, se non presente, lo installa
+                    powershell '''
+                        try {
+                            python --version
+                        } catch {
+                            Write-Output "Python non è installato. Installazione in corso..."
+                            pip install python
+                        }
+                    '''
+                }
+            }
+        }
+        
         stage('Install dependencies') {
             steps {
                 script {
-                    // Crea e attiva l'ambiente virtuale Python
                     powershell '''
-                        python --version
                         python -m venv venv
                         ./venv/Scripts/Activate.ps1
                         pip install -r requirements.txt
