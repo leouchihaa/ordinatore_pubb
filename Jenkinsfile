@@ -34,34 +34,29 @@ pipeline {
             }
         }
 
-//        stage('Build Docker image') {
-//            steps {
-//                script {
-//                    // Costruisci l'immagine Docker
-//                    powershell '''
-//                        cd src
-//                        docker build -t myapp:latest .
-//                    '''
-//                }
-//            }
-//        }
+        stage('Build Docker image') {
+            steps {
+                script {
+                    // Costruisci l'immagine Docker
+                    powershell '''
+                        cd src
+                        docker build -t myapp:latest .
+                    '''
+                }
+            }
+        }
 
         stage('Run Docker container') {
             steps {
                 script {
                     // Ferma e rimuove il contenitore Docker se esiste già
                     powershell '''
-                        echo frinc
-                        try {
-                            docker stop myapp_container
-                        } catch {
-                            echo "non ci sono container attivi dalle compilazioni precedenti."
-                        }
-                        echo frincc
+                        # Rimuove containers avviati precedentemente
+                        docker stop myapp_container
+                        docker rm myapp_container
+                        
                         # Avvia il contenitore Docker
-                        echo daje
                         docker run -d -p 3000:3000 --name myapp_container myapp:latest
-                        echo dajedaje
                     '''
                 }
             }
@@ -74,8 +69,8 @@ pipeline {
             script {
                 // Ferma e rimuove il contenitore Docker alla fine della pipeline
                 powershell '''
-                    docker stop myapp_container -ErrorAction SilentlyContinue
-                    docker rm myapp_container -ErrorAction SilentlyContinue
+                    docker stop myapp_container
+                    docker rm myapp_container
                 '''
             }
         }
