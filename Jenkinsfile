@@ -14,11 +14,10 @@ pipeline {
         stage('working directory & info') {
             steps {
                 script {
-                    pwd
-                    echo ' '
-                    whoami
-                    echo ' '
-                    ls
+                    $workingdir = pwd
+                    $myname = whoami
+                    return $workingdir
+                    return $myname
                 }
             }
         }
