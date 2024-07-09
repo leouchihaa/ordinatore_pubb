@@ -22,7 +22,7 @@ pipeline {
             }
         }
 
-        stage('Install python') {
+        stage('check and install python') {
             steps {
                 script {
                     //controlla la versione di python e, se non presente, lo installa
