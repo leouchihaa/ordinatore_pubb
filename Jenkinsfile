@@ -57,6 +57,7 @@ pipeline {
                         } catch {
                             echo "non ci sono container attivi dalle compilazioni precedenti."
                         }
+                        echo frincc
                     '''
 
                     // Avvia il contenitore Docker
