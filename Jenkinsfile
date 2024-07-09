@@ -14,8 +14,10 @@ pipeline {
         stage('working directory & info') {
             steps {
                 script {
-                    pwd
-                    whoami
+                    powershell '''
+                        pwd
+                        whoami
+                    '''
                 }
             }
         }
