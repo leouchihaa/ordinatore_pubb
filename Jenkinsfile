@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        PATH = "$PATH:/c/Python39"
+    }
+    
     stages {
         
         stage('Clone repository') {
@@ -27,6 +31,7 @@ pipeline {
                 script {
                     //controlla la versione di python e, se non presente, lo installa
                     powershell '''
+                        $P
                         try {
                             python --version
                         } catch {
@@ -44,7 +49,7 @@ pipeline {
                     powershell '''
                         python -m venv venv
                         ./venv/Scripts/Activate.ps1
-                        pip install -r requirements.txt
+                        pip install -r ./src/requirements.txt
                     '''
                 }
             }
