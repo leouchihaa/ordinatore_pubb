@@ -65,14 +65,8 @@ pipeline {
             script {
                 // Ferma e rimuove il contenitore Docker alla fine della pipeline
                 powershell '''
-                    docker stop myapp_container
-                    if (-not $?) {
-                            return 0
-                        }
-                    docker rm myapp_container
-                    if (-not $?) {
-                            return 0
-                        }
+                    docker stop myapp_container -ErrorAction SilentlyContinue
+                    docker rm myapp_container -ErrorAction SilentlyContinue
                 '''
             }
         }
