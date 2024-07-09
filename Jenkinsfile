@@ -61,8 +61,9 @@ pipeline {
 
                     // Avvia il contenitore Docker
                     powershell '''
-                        docker ps
+                        echo daje
                         docker run -d -p 3000:3000 --name myapp_container myapp:latest
+                        echo dajedaje
                     '''
                 }
             }
