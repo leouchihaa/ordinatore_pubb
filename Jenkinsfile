@@ -68,7 +68,7 @@ pipeline {
             echo 'Cleaning up...'
             script {
                 // timer prima della rimozione del container
-                sleep(time: 1, unit: 'MINUTES')
+                sleep(time: 3, unit: 'MINUTES')
             }
             script {
                 // Ferma e rimuove il contenitore Docker alla fine della pipeline
