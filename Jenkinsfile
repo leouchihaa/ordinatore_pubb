@@ -51,11 +51,12 @@ pipeline {
                 script {
                     // Ferma e rimuove il contenitore Docker se esiste già
                     powershell '''
+                        echo frinc
                         try {
                             docker stop myapp_container
                             docker rm myapp_container
                         } catch {
-                            # Non eseguire alcuna azione
+                            echo "non ci sono container dalle compilazioni precedenti."
                         }
                     '''
 
