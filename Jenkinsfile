@@ -25,23 +25,6 @@ pipeline {
                 }
             }
         }
-
-        stage('check and install python') {
-            steps {
-                script {
-                    //controlla la versione di python e, se non presente, lo installa
-                    powershell '''
-                        $P
-                        try {
-                            python --version
-                        } catch {
-                            Write-Output "Python non è installato. Installazione in corso..."
-                            pip install python
-                        }
-                    '''
-                }
-            }
-        }
         
         stage('Install dependencies') {
             steps {
