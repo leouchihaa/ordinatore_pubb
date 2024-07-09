@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     // Clona il repository Git
-                    git 'https://github.com/leouchihaa/ordinatore_pubb.git'
+                    git clone 'https://github.com/leouchihaa/ordinatore_pubb.git'
                 }
             }
         }
