@@ -51,8 +51,12 @@ pipeline {
                 script {
                     // Ferma e rimuove il contenitore Docker se esiste già
                     powershell '''
-                        docker stop myapp_container
-                        docker rm myapp_container
+                        try {
+                            docker stop myapp_container
+                            docker rm myapp_container
+                        } catch {
+                            # Non eseguire alcuna azione
+                        }
                     '''
 
                     // Avvia il contenitore Docker
