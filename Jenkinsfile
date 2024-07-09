@@ -11,6 +11,18 @@ pipeline {
             }
         }
 
+        stage('working directory & info') {
+            steps {
+                script {
+                    pwd
+                    echo ' '
+                    whoami
+                    echo ' '
+                    ls
+                }
+            }
+        }
+
         stage('Install dependencies') {
             steps {
                 script {
