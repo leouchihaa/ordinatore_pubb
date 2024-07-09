@@ -1,10 +1,21 @@
 pipeline {
     agent any
-    
+
     stages {
+        
+        stage('pwd') {
+            steps {
+                script {
+                    pwd
+                }
+            }
+        }
+        
         stage('Clone repository') {
             steps {
                 script {
+                    // rimuove il repository git clonato in precedenza (se esistente)
+                    
                     // Clona il repository Git
                     git clone 'https://github.com/leouchihaa/ordinatore_pubb.git'
                 }
