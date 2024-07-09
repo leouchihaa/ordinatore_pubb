@@ -39,7 +39,7 @@ pipeline {
                 script {
                     // Costruisci l'immagine Docker
                     powershell '''
-                        cd ordinatore_pubb/src
+                        cd src
                         docker build -t myapp:latest .
                     '''
                 }
