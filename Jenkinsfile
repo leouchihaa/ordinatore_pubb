@@ -16,8 +16,8 @@ pipeline {
                 script {
                     $workingdir = pwd
                     $myname = whoami
-                    return $workingdir
-                    return $myname
+                    echo '$workingdir'
+                    echo '$myname'
                 }
             }
         }
