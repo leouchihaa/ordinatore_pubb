@@ -6,7 +6,7 @@ pipeline {
         stage('Clone repository') {
             steps {
                 script {
-                    git branch: 'main', url: 'https://github.com/user/repo.git'
+                    git branch: 'main', url: 'https://github.com/leouchihaa/ordinatore_pubb.git'
                 }
             }
         }
@@ -41,13 +41,7 @@ pipeline {
                     // Ferma e rimuove il contenitore Docker se esiste già
                     powershell '''
                         docker stop myapp_container
-                        if (-not $?) {
-                            return 0
-                        }
                         docker rm myapp_container
-                        if (-not $?) {
-                            return 0
-                        }
                     '''
 
                     // Avvia il contenitore Docker
