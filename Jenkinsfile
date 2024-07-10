@@ -56,7 +56,7 @@ pipeline {
                         docker rm myapp_container
                         
                         # Avvia il contenitore Docker
-                        docker run -d -p 3000:3000 --name myapp_container myapp:latest
+                        docker run -d -p 3333:3333 --name myapp_container myapp:latest
                     '''
                 }
             }
