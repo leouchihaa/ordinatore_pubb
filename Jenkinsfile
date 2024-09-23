@@ -38,7 +38,7 @@ pipeline {
                 script {
                     sh '''
                         cd src
-                        sudo docker build -t myapp:latest .
+                        docker build -t myapp:latest .
                     '''
                 }
             }
@@ -49,11 +49,11 @@ pipeline {
                 script {
                     sh '''
                         # Stop and remove the Docker container if it exists
-                        sudo docker stop myapp_container || true
-                        sudo docker rm myapp_container || true
+                        docker stop myapp_container || true
+                        docker rm myapp_container || true
                         
                         # Run the Docker container
-                        sudo docker run -d -p 3333:3333 --name myapp_container myapp:latest
+                        docker run -d -p 3333:3333 --name myapp_container myapp:latest
                     '''
                 }
             }
