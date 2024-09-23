@@ -16,7 +16,6 @@ pipeline {
                 script {
                     sh '''
                         python --version
-                        whoami
                     '''
                 }
             }
