@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        sudo python3 -m venv venv
+                        echo "Salsa" | sudo -S python3 -m venv venv
                         source venv/bin/activate
                         sudo pip install -r ./src/requirements.txt
                     '''
