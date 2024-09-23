@@ -38,7 +38,7 @@ pipeline {
                 script {
                     sh '''
                         cd src
-                        docker build -t myapp:latest .
+                        echo "Salsa" | sudo -S docker build -t myapp:latest .
                     '''
                 }
             }
