@@ -25,9 +25,9 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        python3 -m venv venv
-                        source venv/bin/activate
-                        pip install -r ./src/requirements.txt
+                        sudo python3 -m venv venv
+                        sudo source venv/bin/activate
+                        sudo pip install -r ./src/requirements.txt
                     '''
                 }
             }
@@ -38,7 +38,7 @@ pipeline {
                 script {
                     sh '''
                         cd src
-                        docker build -t myapp:latest .
+                        sudo docker build -t myapp:latest .
                     '''
                 }
             }
@@ -49,11 +49,11 @@ pipeline {
                 script {
                     sh '''
                         # Stop and remove the Docker container if it exists
-                        docker stop myapp_container || true
-                        docker rm myapp_container || true
+                        sudo docker stop myapp_container || true
+                        sudo docker rm myapp_container || true
                         
                         # Run the Docker container
-                        docker run -d -p 3333:3333 --name myapp_container myapp:latest
+                        sudo docker run -d -p 3333:3333 --name myapp_container myapp:latest
                     '''
                 }
             }
