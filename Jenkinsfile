@@ -62,21 +62,4 @@ pipeline {
             }
         }
     }
-
-    post {
-        always {
-            echo 'Cleaning up...'
-            script {
-                // timer prima della rimozione del container
-                sleep(time: 3, unit: 'HOURS')
-            }
-            script {
-                // Ferma e rimuove il contenitore Docker alla fine della pipeline
-                powershell '''
-                    docker stop myapp_container
-                    docker rm myapp_container
-                '''
-            }
-        }
-    }
 }
