@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    
+
     stages {
         
         stage('Clone repository') {
@@ -11,23 +11,23 @@ pipeline {
             }
         }
 
-        stage('working directory & info') {
+        stage('Working directory & info') {
             steps {
                 script {
-                    powershell '''
+                    sh '''
                         python --version
                         whoami
                     '''
                 }
             }
         }
-        
+
         stage('Install dependencies') {
             steps {
                 script {
-                    powershell '''
-                        python -m venv venv
-                        ./venv/Scripts/Activate.ps1
+                    sh '''
+                        python3 -m venv venv
+                        source venv/bin/activate
                         pip install -r ./src/requirements.txt
                     '''
                 }
@@ -37,8 +37,7 @@ pipeline {
         stage('Build Docker image') {
             steps {
                 script {
-                    // Costruisci l'immagine Docker
-                    powershell '''
+                    sh '''
                         cd src
                         docker build -t myapp:latest .
                     '''
@@ -49,13 +48,12 @@ pipeline {
         stage('Run Docker container') {
             steps {
                 script {
-                    // Ferma e rimuove il contenitore Docker se esiste già
-                    powershell '''
-                        # Rimuove containers avviati precedentemente
-                        docker stop myapp_container
-                        docker rm myapp_container
+                    sh '''
+                        # Stop and remove the Docker container if it exists
+                        docker stop myapp_container || true
+                        docker rm myapp_container || true
                         
-                        # Avvia il contenitore Docker
+                        # Run the Docker container
                         docker run -d -p 3333:3333 --name myapp_container myapp:latest
                     '''
                 }
