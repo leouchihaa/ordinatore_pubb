@@ -15,7 +15,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        python --version
+                        python3 --version
                     '''
                 }
             }
